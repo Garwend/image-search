@@ -11,7 +11,14 @@ function App() {
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch(setFolders(JSON.parse(window.localStorage.getItem('folders'))))
+    const folders = window.localStorage.getItem('folders')
+
+    if (folders !== null) {
+      dispatch(setFolders(JSON.parse(folders)))
+    }else{
+      dispatch(setFolders([]))
+    }
+    
   },[dispatch])
 
   return (
