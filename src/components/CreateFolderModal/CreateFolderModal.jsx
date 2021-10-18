@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Modal, Form } from 'react-bootstrap';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createFolder } from "../../actions/folderActions";
 
 const CreateFolder = () => {
@@ -11,12 +11,17 @@ const CreateFolder = () => {
     const handleShow = () => setShow(true);
 
     const dispatch = useDispatch();
+    const folders = useSelector(state => state.folders);
 
     const handleChange = e => setName(e.target.value);
-    const handleSubmit = e => {
-        dispatch(createFolder({ name, images: [] }))
-        setName('');
-        handleClose();
+    const handleSubmit = () => {
+        if (name.trim() !== '' && !folders.some(folder => folder.name === name.trim())) {
+            dispatch(createFolder({ name: name.trim(), images: [] }))
+            setName('');
+            handleClose();
+        } else {
+            console.warn('niepoprawna nazwa folderu')
+        }
     }
 
     return (
