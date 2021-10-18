@@ -1,17 +1,16 @@
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import CreateFolder from './components/CreateFolderModal/CreateFolderModal';
+import SearchBox from './components/SearchBox/SearchBox';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
   return (
     <div className='App'>
-      <Container>
-        <Row>
-          <CreateFolder />
-        </Row>
-      </Container>
+      <CreateFolder />
+      <SearchBox />
     </div>
   );
 }
