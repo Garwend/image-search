@@ -15,7 +15,7 @@ const CreateFolder = () => {
     }
 
     return (
-        <div>
+        <div className='d-flex align-items-center'>
             <Button variant='primary' onClick={handleShow}>
                 Stwórz Folder
             </Button>
