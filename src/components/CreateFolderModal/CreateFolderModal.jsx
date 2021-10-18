@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, Form } from 'react-bootstrap';
+import { useDispatch } from "react-redux";
+import { createFolder } from "../../actions/folderActions";
 
 const CreateFolder = () => {
     const [show, setShow] = useState(false);
@@ -8,9 +10,12 @@ const CreateFolder = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const dispatch = useDispatch();
+
     const handleChange = e => setName(e.target.value);
     const handleSubmit = e => {
-        console.log('submit')
+        dispatch(createFolder({ name, images: [] }))
+        setName('');
         handleClose();
     }
 

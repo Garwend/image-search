@@ -1,12 +1,13 @@
-import { Container, Row } from "react-bootstrap";
+
+import { useSelector } from "react-redux";
 import Folder from "./subcomponents/Folder/Folder";
 
 const FoldersList = () => {
+    const folders = useSelector((state) => state.folders)
+
     return (
         <>
-            <Folder />
-            <Folder />
-            <Folder />
+            {folders.map(folder => <Folder key={folder.name} name={folder.name} />)}
         </>
     )
 }
