@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Folder from "./subcomponents/Folder/Folder";
 
 const FoldersList = () => {
-    const folders = useSelector((state) => state.folders)
+    const folders = useSelector((state) => state.foldersReducer.folders)
 
     return (
         <>

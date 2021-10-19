@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setFolders } from './actions/folderActions';
 import CreateFolder from './components/CreateFolderModal/CreateFolderModal';
 import FoldersList from './components/FoldersList/FoldersList';
+import ImagesList from './components/ImagesList/ImagesList';
 import SearchBox from './components/SearchBox/SearchBox';
 
 
@@ -28,9 +29,13 @@ function App() {
           <CreateFolder />
           <FoldersList />
         </Row>
-        <Row>
+        <div>
+          <h1 className='mt-5 text-center'>
+            Szukaj zdjęcia
+          </h1>
           <SearchBox />
-        </Row>
+          <ImagesList />
+        </div>
       </Container>
     </div>
   );
