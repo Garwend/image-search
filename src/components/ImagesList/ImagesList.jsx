@@ -1,11 +1,12 @@
-import { Row, Image } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import Image from './subcomponents/Image';
 
 const ImagesList = () => {
     const images = useSelector(state => state.imagesReducer.images);
     return (
-        <Row className='mb-5' xs='auto'>
-            {images.map(image => <Image className='w-25 mb-4' style={{objectFit:'cover'}} key={image.id} src={image.urls.regular} rounded/>)}
+        <Row className='mb-5 justify-content-around' xs='auto'>
+            {images.map(image => <Image key={image.id} url={image.urls.regular} alt={image.alt_description} />)}
         </Row>
     )
 }
