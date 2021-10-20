@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setFolders } from './actions/folderActions';
-import AddImagesToFolderButton from './components/AddImagesToFolderButton/AddImagesToFolderButton';
-import CreateFolder from './components/CreateFolderModal/CreateFolderModal';
-import FoldersList from './components/FoldersList/FoldersList';
-import ImagesList from './components/ImagesList/ImagesList';
-import SearchBox from './components/SearchBox/SearchBox';
+
+import MainPage from './pages/MainPage';
+import FolderPage from './pages/FolderPage';
 
 
 function App() {
@@ -24,23 +22,15 @@ function App() {
   },[dispatch])
 
   return (
-    <div className='App'>
-      <Container className='mt-3'>
-        <Row xs='auto'>
-          <CreateFolder />
-          <FoldersList />
-        </Row>
-        <div>
-          <h1 className='mt-5 text-center'>
-            Szukaj zdjęcia
-          </h1>
-          <SearchBox />
-          <h4 className='mb-5 text-center'>wybierz zdjęcia, a następnie dodaj je do folderu klikając w <i className="bi bi-folder-plus"></i></h4>
-          <ImagesList />
-        </div>
-      </Container>
-      <AddImagesToFolderButton />
-    </div>
+    <Router>
+      <div className='App'>
+        <Switch>
+          <Route exact path='/' component={MainPage}/>
+          <Route path='/:folderName' component={FolderPage}/>
+        </Switch>
+      </div>
+    </Router>
+
   );
 }
 

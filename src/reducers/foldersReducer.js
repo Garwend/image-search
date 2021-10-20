@@ -18,8 +18,8 @@ const foldersReducer = (state= defaultState, action) => {
         case ADD_IMAGE_TO_FOLDER:
             const folders = JSON.parse(window.localStorage.getItem('folders'));
             const folderIdx = folders.findIndex(folder => folder.name === action.payload.folderName);
-            folders[folderIdx].images = [...folders[folderIdx].images, ...action.payload.selectedImages]
-            
+            folders[folderIdx].images = [...folders[folderIdx].images, ...action.payload.selectedImages];
+            folders[folderIdx].images = [...new Set(folders[folderIdx].images)];
             window.localStorage.setItem('folders', JSON.stringify(folders));
 
             return {
