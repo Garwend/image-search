@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { searchImages } from "../../actions/imagesActions";
+import { clearSelectedImages, searchImages } from "../../actions/imagesActions";
 
 const SearchBox = () => {
     const [text, setText] = useState('');
@@ -12,6 +12,7 @@ const SearchBox = () => {
     const handleSubmit = () => {
         if (text.trim() !== '') {
             dispatch(searchImages(text));
+            dispatch(clearSelectedImages());
         }
         setText('')
     };

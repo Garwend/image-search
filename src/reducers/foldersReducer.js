@@ -1,4 +1,4 @@
-import { CREATE_FOLDER, SET_FOLDERS } from "../actions/folderActions";
+import { CREATE_FOLDER, SET_FOLDERS, ADD_IMAGE_TO_FOLDER } from "../actions/folderActions";
 
 const defaultState = {
     folders: []
@@ -15,6 +15,17 @@ const foldersReducer = (state= defaultState, action) => {
             return {
                 folders: action.payload,
             }
+        case ADD_IMAGE_TO_FOLDER:
+            const folders = JSON.parse(window.localStorage.getItem('folders'));
+            const folderIdx = folders.findIndex(folder => folder.name === action.payload.folderName);
+            folders[folderIdx].images = [...folders[folderIdx].images, ...action.payload.selectedImages]
+            
+            window.localStorage.setItem('folders', JSON.stringify(folders));
+
+            return {
+                folders,
+            };
+            
         default:
             return state;
     }

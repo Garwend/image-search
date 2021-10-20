@@ -2,10 +2,15 @@ import {ACCESS_KEY} from '../secret';
 
 export const SET_IMAGES = 'SET_IMAGES';
 export const SELECT_IMAGE = 'SELECT_IMAGE';
+export const CLEAR_SELECTED_IMAGES = 'CLEAR_SELECTED_IMAGES';
 
 export const setImages = (payload) => ({
     type: SET_IMAGES,
     payload: payload,
+})
+
+export const clearSelectedImages = () => ({
+    type: CLEAR_SELECTED_IMAGES,
 })
 
 export const selectImage = (payload) => ({

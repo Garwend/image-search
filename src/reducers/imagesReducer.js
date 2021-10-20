@@ -1,4 +1,4 @@
-import { SELECT_IMAGE, SET_IMAGES } from "../actions/imagesActions";
+import { SELECT_IMAGE, SET_IMAGES, CLEAR_SELECTED_IMAGES} from "../actions/imagesActions";
 
 const defaultState = {
     images: [],
@@ -24,7 +24,11 @@ const imagesReducer = (state= defaultState, action) => {
                     selectedImages: [...state.selectedImages, action.payload]
                 }
             }
-
+        case CLEAR_SELECTED_IMAGES:
+            return {
+                images: state.images,
+                selectedImages: [],
+            }
         default:
             return state;
     }

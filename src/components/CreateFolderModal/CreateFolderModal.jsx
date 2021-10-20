@@ -11,7 +11,7 @@ const CreateFolder = () => {
     const handleShow = () => setShow(true);
 
     const dispatch = useDispatch();
-    const folders = useSelector(state => state.folders);
+    const folders = useSelector(state => state.foldersReducer.folders);
 
     const handleChange = e => setName(e.target.value);
     const handleSubmit = () => {
